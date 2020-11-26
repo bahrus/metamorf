@@ -65,3 +65,13 @@ Server renders:
 ```html
 <meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset></meta-morf>
 ```
+
+Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item.  Use [nomodule]()
+
+```html
+<meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset>
+    <script >
+        document.currentScript.parentElement.where = el => el.matches('[some css criteria]')
+    </script>
+</meta-morf>
+```
