@@ -66,7 +66,7 @@ Server renders:
 <meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset></meta-morf>
 ```
 
-Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item.  Use [nomodule]()
+Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item. 
 
 ```html
 <meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset>
@@ -75,3 +75,7 @@ Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item.  Use [nom
     </script>
 </meta-morf>
 ```
+
+Use case 2
+
+"bootstrap" with simple, low cost element, shapeshift into more elaborate component after finished downloading.
