@@ -54,6 +54,36 @@ This approach would certainly not be ideal for post-ssr html queries, after the 
 
 So maybe this isn't right.
 
+If the "requirement" that the backend not be tightly coupled to a design library, perhaps a better performing way of accommodating this would be as follows:
+
+1,  The server generates:
+
+```html
+<ul>
+    <li>Item 0</li>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 2</li>
+</ul>
+```
+
+A web component can take the list as its input via slotting:
+
+```html
+<standard-to-mwclist>
+    <ul slot=standardList>
+        <li>Item 0</li>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 2</li>
+    </ul>
+</standard-to-mwclist>
+```
+
+standard-to-mwclist has a slot inside the shadow dom, which is hidden.  A slot change event will fire, and standard-to-mwclist can treat the ul/li markup as data and transform it into mwc-list within its shadowdom.
+
+So then in this scenario where metamorf might help is create a "HTML import mapping" that says:  "When I encounter a ul/li list, add attribute 'slot=standardList' and wrap it inside a standard-to-mwclist tag."
+
 
 
 What about extra properties?
