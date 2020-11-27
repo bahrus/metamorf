@@ -25,7 +25,7 @@ Consider this markup:
 
 Web servers have been moving away from tightly coupling their output to the UI -- first with AJAX (where X stands for XML), then with JSON.
 
-Making the web server tightly coupled to a specific design library may be a hard sell.  Plus how to elegantly show the initial list without fancy, throwaway css tied to showing the markup above as a list?
+Making the web server tightly coupled to a specific design library may be a hard sell in some cases.  Plus how to elegantly show the initial list without fancy, throwaway css tied to showing the markup above as a list?
 
 So alternative:
 
@@ -45,6 +45,16 @@ Just as "index.html" can have an import map json, it could contain an html to we
 ```html
 <meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined></meta-morf>
 ```
+
+## Is this ideal?
+
+The biggest downside I see to this approach is the cost of transforming the DOM in such a radical way.
+
+This approach would certainly not be ideal for post-ssr html queries, after the mwc (for example) library has loaded.
+
+So maybe this isn't right.
+
+
 
 What about extra properties?
 
