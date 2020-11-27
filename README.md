@@ -27,6 +27,35 @@ Web servers have been moving away from tightly coupling their output to the UI -
 
 Making the web server tightly coupled to a specific design library may be a hard sell in some cases.  Plus how to elegantly show the initial list without fancy, throwaway css tied to showing the markup above as a list?
 
+This issue is not specific to web components -- the focus here is on a cultural bias that has developed over time in many circles, where the established culture is that the server only provides api's, no SSR or any kind of HTML views.  Everything in the browser, then,  is derived from JSON data + JavaScript.  This cultural shift occurred especially hard in corporate intranets, where bandwidth is generally aplenty, and providing mobile-friendly experiences with slow network connections is regarded as off-the-beaten-track edge case.  
+
+In such an environment, switching to an HTML api would raise similar concerns generating this:
+
+```html
+<mwc-list>
+  <mwc-list-item>Item 0</mwc-list-item>
+  <mwc-list-item>Item 1</mwc-list-item>
+  <mwc-list-item>Item 2</mwc-list-item>
+  <mwc-list-item>Item 3</mwc-list-item>
+</mwc-list>
+```
+
+as generating this:
+
+```html
+<ul class="list-group">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+```
+
+
+
+Perhaps the "correct" view towards this paradigm shift is to say "It's a new dawn, it's a new day, embrace PhP already" (joke), and realign development accordingly.  Part of what makes 
+
 So alternative:
 
 Server renders:
