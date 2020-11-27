@@ -11,7 +11,7 @@ Import maps for HTML.
 Use case 1 -- SSR
 
 <details>
-<summary>A perpetual critic's view of the current UI Syntax landscape>
+<summary>A perpetual critic's view of the current UI Syntax landscape</summary>
 
 
 Consider this markup:
