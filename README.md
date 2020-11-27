@@ -8,9 +8,11 @@ Import maps for HTML.
 
 ## Why
 
-Use case 1
+Use case 1 -- SSR
 
-SSR
+<details>
+<summary>A perpetual critic's view of the current UI Syntax landscape>
+
 
 Consider this markup:
 
@@ -52,9 +54,15 @@ as generating this:
 </ul>
 ```
 
+Perhaps the "correct" view towards this paradigm shift is to say "It's a new dawn, it's a new day, embrace PhP already" (joke), and realign development accordingly.  Part of what makes (me) less enthusiastic about investing too much in server-side technologies, is that, like front-end frameworks, it is another (vendor-based) tie-in.  Admittedly, having a vendor out there "watching your back" is a comfort for many, and I suppose is for me as well.  
+
+XSLT is an appealing solution, as it provides a nice "mapping" mechanism that works both on the server and (more or less) in the browser.  This would require a medium-level paradigm shift where api's provide options where the output can be JSON or XML, and consumers choose whichever is more convenient.
+
+Another option is to make the API continue to work exclusively with JSON output.  Use a language that is recognized (with minimal modification) in the browser, as well as a (JS-based) server  -- tagged template literals, for example, or JSX/[E4X(https://en.wikipedia.org/wiki/ECMAScript_for_XML)], especially if the latter were standardized.
 
 
-Perhaps the "correct" view towards this paradigm shift is to say "It's a new dawn, it's a new day, embrace PhP already" (joke), and realign development accordingly.  Part of what makes 
+
+A syntax that allows 
 
 So alternative:
 
@@ -144,6 +152,8 @@ Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item.
     </script>
 </meta-morf>
 ```
+
+</details>
 
 Use case 2
 
