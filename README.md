@@ -8,7 +8,7 @@ Import maps for HTML.
 
 ## Why
 
-Use case 1 -- SSR
+Weak, probably not a valid use case -- SSR
 
 <details>
 <summary>A perpetual critic's view of the current UI Syntax landscape</summary>
@@ -60,98 +60,10 @@ XSLT is an appealing solution, as it provides a nice "mapping" mechanism that wo
 
 Another option is to make the API continue to work exclusively with JSON output.  Use a language that is recognized (with minimal modification) in the browser, as well as a (JS-based) server  -- tagged template literals, for example, or JSX/[E4X(https://en.wikipedia.org/wiki/ECMAScript_for_XML)], especially if the latter were standardized.
 
+Popular as these are, they have some limitations, in my mind.  They are inspired from server-side rendering engines, where the emphasis is on generating the markup from a "state" or "model" object.  These makes total sense on the server, where each new request means a new document must be created.  But using the syntax both on the server, and possibly on the client during initial rendering, and on the client during updates, means that the syntax ends up cramming multiple aspects of rendering into one crowded syntax, and then requires some sort of mental-model training to understand which aspects are relevant during each of these events.  For example, adding event handlers doesn't make sense on the server, nor during updates, so the developer needs to understand these quirks when it becomes necessary.  And libraries then bear the burden of "decompiling" the compact notation into optimized instruction sets, adding to the complexity and (potentially) run-time footprint.  
 
+How to account for other differences between client and server, such as streaming the output on the server, use of attributes vs properties, etc, compatibility with all web servers leads me to believe, despite current trends, that the more that can be turned into data formats (HTML, JSON-ish, etc), the more easily constructs can be "shared" across environments (server / build / client crossed with multilingual server-side technologies). 
 
-A syntax that allows 
-
-So alternative:
-
-Server renders:
-
-```html
-<ul>
-    <li>Item 0</li>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 2</li>
-</ul>
-```
-
-Just as "index.html" can have an import map json, it could contain an html to web component map:
-
-```html
-<meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined></meta-morf>
-```
-
-## Is this ideal?
-
-The biggest downside I see to this approach is the cost of transforming the DOM in such a radical way.
-
-This approach would certainly not be ideal for post-ssr html queries, after the mwc (for example) library has loaded.
-
-So maybe this isn't right.
-
-If the "requirement" that the backend not be tightly coupled to a design library, perhaps a better performing way of accommodating this would be as follows:
-
-1,  The server generates:
-
-```html
-<ul>
-    <li>Item 0</li>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 2</li>
-</ul>
-```
-
-A web component can take the list as its input via slotting:
-
-```html
-<standard-to-mwclist>
-    <ul slot=standardList>
-        <li>Item 0</li>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 2</li>
-    </ul>
-</standard-to-mwclist>
-```
-
-standard-to-mwclist has a slot inside the shadow dom, which is hidden.  A slot change event will fire, and standard-to-mwclist can treat the ul/li markup as data and transform it into mwc-list within its shadowdom.
-
-So then in this scenario where metamorf might help is create a "HTML import mapping" that says:  "When I encounter a ul/li list, add attribute 'slot=standardList' and wrap it inside a standard-to-mwclist tag."
-
-
-
-What about extra properties?
-
-mwc-list has attributes not applicable to ul, but still semantically meaningful:  multi, for example
-
-
-Server renders:
-
-```html
-<ul data-multi>
-    <li>Item 0</li>
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 2</li>
-</ul>
-```
-
-```html
-<meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset></meta-morf>
-```
-
-Maybe we don't want to turn *all* ul/li's into mwc-list/mwc-list-item. 
-
-```html
-<meta-morf from='["ul", "li"]' to='["mwc-list", "mwc-list-item"]' when-defined merge-dataset>
-    <script >
-        document.currentScript.parentElement.where = el => el.matches('[some css criteria]')
-    </script>
-</meta-morf>
-```
 
 </details>
 
