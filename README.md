@@ -29,7 +29,7 @@ Web servers have been moving away from tightly coupling their output to the UI -
 
 Making the web server tightly coupled to a specific design library may be a hard sell in some cases.  Plus how to elegantly show the initial list without fancy, throwaway css tied to showing the markup above as a list?
 
-This issue is not specific to web components -- the focus here is on a cultural bias that has developed over time in many circles, where the established culture is that the server only provides api's, no SSR or any kind of HTML views.  Everything in the browser, then,  is derived from JSON data + JavaScript.  This cultural shift occurred especially hard in corporate intranets, where bandwidth is generally aplenty, and providing mobile-friendly experiences with slow network connections is regarded as off-the-beaten-track edge case.  
+This issue is not specific to web components -- the focus here is on a cultural bias that has developed over time in many circles, where the established culture is that the server only provides api's, no SSR or any kind of HTML views.  Everything in the browser, then,  is derived from JSON data + JavaScript.  This cultural shift occurred especially hard in corporate intranets, where bandwidth is generally aplenty, and providing mobile-friendly experiences with slow network connections is regarded as an off-the-beaten-track edge case.  
 
 In such an environment, switching to an HTML api would raise similar concerns generating this:
 
@@ -70,3 +70,5 @@ How to account for other differences between client and server, such as streamin
 Use case 2
 
 "bootstrap" with simple, low cost element, shapeshift into more elaborate component after finished downloading.
+
+
