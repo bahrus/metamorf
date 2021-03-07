@@ -20,6 +20,8 @@ Create a base web component that uses the native DOM (form) elements / CSS effec
 
 Then, as much as time permits, create a vast catalog of (extending?) additional web components with (nearly) identical public property / method / light children signatures, each extending the base web component, but making use of a particular design library web component library -- UI5, Material, Fast, HAX, Vaadin, Lion, Shoelace.Style, Ionic, Patternfly, etc.  On top of which full, robust functionality is added.
 
+**NB:** Fast components take an [intriguing alternative approach to this](https://www.fast.design/docs/design-systems/overview#the-designsystemprovider). 
+
 Now suppose we want the web server to not have to cater to the whims of the moment.   The HTML the server generates (with the exception of the declarative ShadowDOM, perhaps) can act as a "permanent" design-library-neutral HTML stream, only consisting of "business" related tags. This will load quite quickly due to the expected small footprint of the base web component:
 
 ```html
