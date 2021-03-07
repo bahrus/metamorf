@@ -20,7 +20,9 @@ Create a base web component that uses the native DOM (form) elements / CSS effec
 
 Then, as much as time permits, create a vast catalog of (extending?) additional web components with (nearly) identical public property / method / light children signatures, each extending the base web component, but making use of a particular design library web component library -- UI5, Material, Fast, HAX, Vaadin, Lion, Shoelace.Style, Ionic, Patternfly, etc.  On top of which full, robust functionality is added.
 
-**NB:** Fast components take an [intriguing alternative approach to this](https://www.fast.design/docs/design-systems/overview#the-designsystemprovider). 
+**NB I:** Fast components take an [intriguing alternative approach to this](https://www.fast.design/docs/design-systems/overview#the-designsystemprovider). 
+
+**NB II:** Some libraries, like [lion](https://github.com/ing-bank/lion), [elix](https://github.com/elix/elix), and [generic-components](https://github.com/thepassle/generic-components) address part of this issue by providing "lookless components".
 
 Now suppose we want the web server to not have to cater to the whims of the moment.   The HTML the server generates (with the exception of the declarative ShadowDOM, perhaps) can act as a "permanent" design-library-neutral HTML stream, only consisting of "business" related tags. This will load quite quickly due to the expected small footprint of the base web component:
 
@@ -67,7 +69,7 @@ Kind of same idea, but taken a little further:
 
 Suppose you need to display a large amount of tabular data with Excel like functionality?  
 
-In the past, this required a heavy duty component like Revo grid, Vaadin grid, or Ag-grid, so nothing could display until the component is downloaded.
+This requires a heavy duty component like [Revo grid](https://github.com/revolist/revogrid), [Vaadin grid](https://vaadin.com/components/vaadin-grid), , [ExtJS](https://www.sencha.com/products/extwebcomponents/), [Infragistics](https://www.infragistics.com/products/ignite-ui-web-components), [widjmo](https://demos.wijmo.com/5/WebComponents/WebComponentsIntro/WebComponentsIntro/), [lightning](https://developer.salesforce.com/docs/component-library/bundle/lightning-datatable/example), or the fledgling [ag-grid](https://github.com/ag-grid/ag-grid-webcomponent), so nothing can display until the component is downloaded.  These libraries are understandably large, I'm guessing (Revo grid is quite small actually).
 
 Of course, it's quite natural to say "why not show a simple table of (some of the) data" while that's happening?
 
