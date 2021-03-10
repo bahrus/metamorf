@@ -24,6 +24,8 @@ Then, as much as time permits, create a vast catalog of (extending?) additional 
 
 **NB II:** Some libraries, like [lion](https://github.com/ing-bank/lion), [elix](https://github.com/elix/elix), and [generic-components](https://github.com/thepassle/generic-components) address part of this issue by providing "lookless components".
 
+
+
 Now suppose we want the web server to not have to cater to the whims of the moment.   The HTML the server generates (with the exception of the declarative ShadowDOM, perhaps) can act as a "permanent" design-library-neutral HTML stream, only consisting of "business" related tags. This will load quite quickly due to the expected small footprint of the base web component:
 
 ```html
@@ -62,6 +64,8 @@ meta-morf makes one "hopeful" assumption about the components it upgrades to -- 
 2.  Potentially faster metrics (Time for Interactivity, etc).
 
 So maybe use a bit judiciously?
+
+**NB III:** Putting aside the issue of progressive bootstrapping, and focusing squarely on the problem of "centralizing the pain" and mapping a specific design library, this is actually a good use case for JS Import maps.  One could create one folder per design library, make all the web components use the same name in each corresponding folder.  Let js import maps be the place to apply "dependency injection" in selecting which specific implementation to choose, depending on the requirements.
 
 #### Use Case IB:
 
